@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body onload="ornek()">
+    <div>Güvenlik Kodu:</div>
+    <br />
+    <canvas id="guvenlikKoduAlani" width="150" height="50"></canvas>
+    <br /><br />
+    <button onclick="degistir()">Kodu Değiştir</button>
+
+    <script type="text/javascript" language="javascript">
+
+        var islem;
+
+        function ornek() {
+            islem = document.getElementById('guvenlikKoduAlani').getContext("2d");
+            islem.fillStyle = "#e6cd57";
+            degistir();
+        }
+
+        function degistir() {
+            var metin = "";
+            for (var baslangic = 0; baslangic < 6; baslangic++) {
+                var rastgeleDeger = Math.random();
+                if (Math.round(rastgeleDeger) == 0) {
+                    metin += String.fromCharCode(48 + 9 * Math.random());
+                } else {
+                    metin += String.fromCharCode(65 + 25 * Math.random());
+                }
+            }
+            islem.clearRect(0, 0, 150, 50);
+            islem.fillRect(0, 0, 150, 50);
+            islem.font = "30px times new roman";
+            islem.strokeText(metin, 24, 34);
+
+        }
+    </script>
+</body>
+</html>
